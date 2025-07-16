@@ -1,25 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context/themecontext";
-import { useAuth } from "../../context/authcontext";
+import { useTheme } from "../../context/ThemeContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
   const { darkMode, setDarkMode } = useTheme();
   const { isAuthenticated, logout } = useAuth();
 
   return (
-    <header>
-      <nav>
+    <header style={{ padding: "1rem", borderBottom: "1px solid #ccc" }}>
+      <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
         <Link to="/">Home</Link>
-        {isAuthenticated && <Link to="/products">Admin</Link>}
-        {!isAuthenticated ? (
-          <Link to="/login">Login</Link>
-        ) : (
-          <button onClick={logout}>Logout</button>
-        )}
+        {isAuthenticated && <Link to="/admin">Produtos</Link>}
+
         <button onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? "Light" : "Dark"} Mode
+          {darkMode ? "Modo Claro" : "Modo Escuro"}
         </button>
+
+        {isAuthenticated ? (
+          <button onClick={logout}>Sair</button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </nav>
     </header>
   );

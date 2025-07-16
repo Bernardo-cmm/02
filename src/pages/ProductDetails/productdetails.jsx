@@ -1,25 +1,26 @@
-import React from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  return <div>Detalhes do produto {id}</div>;
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/products/${id}`)
+      .then((res) => setProduct(res.data))
+      .catch((err) => console.error("Erro ao buscar produto:", err));
+  }, [id]);
+
+  if (!product) return <p>Carregando...</p>;
+
+  return (
+    <div>
+      <h2>{product.name}</h2>
+      <p>Preço: R$ {product.price}</p>
+      <p>Categoria: {product.category}</p>
+    </div>
+  );
 };
 
 export default ProductDetails;
-
-// pages/NotFound.jsx
-import React from "react";
-
-const NotFound = () => <h2>Página não encontrada</h2>;
-
-export default NotFound;
-
-// api/api.js
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "http://localhost:3000",
-});
-
-export default api;

@@ -6,7 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = (username, password) => {
-    if (username === "admin" && password === "admin") {
+    if (username === "Bernardo" && password === "12345") {
       setIsAuthenticated(true);
       return true;
     }

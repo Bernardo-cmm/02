@@ -1,0 +1,36 @@
+body.light {
+    --bg-color: #fefefe;
+    --text-color: #222222;
+    --btn-bg: #007bff;
+    --btn-text: #ffffff;
+    --btn-hover-bg: #0056b3;
+  }
+  
+  body.dark {
+    --bg-color: #121212;
+    --text-color: #eeeeee;
+    --btn-bg: #1f2937;
+    --btn-text: #ffffff;
+    --btn-hover-bg: #374151;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  button {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: var(--btn-hover-bg);
+  }
+  

@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "../pages/Home/home.jsx";
-import Login from "../pages/Login/login.jsx";
-import Products from "../pages/Products/products.jsx";
-import ProductDetails from "../pages/ProductDetails/productdetails.jsx";
-import NotFound from "../pages/NotFound/notfound.jsx";
-import { useAuth } from "./context/authcontext.jsx";
+import Home from "../pages/Home/home";
+import Login from "../pages/Login/login";
+import Products from "../pages/Products/products";
+import ProductDetails from "../pages/ProductDetails/productdetails";
+import NotFound from "../pages/NotFound/notfound";
+import { useAuth } from "../context/AuthContext";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -17,14 +17,14 @@ const Router = () => (
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
     <Route
-      path="/products"
+      path="/admin"
       element={
         <PrivateRoute>
           <Products />
         </PrivateRoute>
       }
     />
-    <Route path="/products/:id" element={<ProductDetails />} />
+    <Route path="/produtos/:id" element={<ProductDetails />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
