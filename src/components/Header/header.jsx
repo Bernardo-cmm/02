@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useTheme } from "../../context/ThemeContext";
 import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
-  const { darkMode, setDarkMode } = useTheme();
+  const { darkMode, toggleTheme } = useTheme();
   const { isAuthenticated, logout } = useAuth();
 
   return (
@@ -13,7 +13,7 @@ const Header = () => {
         <Link to="/">Home</Link>
         {isAuthenticated && <Link to="/admin">Produtos</Link>}
 
-        <button onClick={() => setDarkMode(!darkMode)}>
+        <button onClick={toggleTheme}>
           {darkMode ? "Modo Claro" : "Modo Escuro"}
         </button>
 

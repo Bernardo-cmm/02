@@ -13,16 +13,15 @@ export const getProducts = async () => {
 
 
 
-export const createProduct = async (productData) => {
-    const { data } = await api.post("/products", productData);
-    return data;
-  };
-  
-  
-  export const updateProduct = async (id, updatedData) => {
-    const { data } = await api.put(`/products/${id}`, updatedData);
-    return data;
-  };
+export const createProduct = async (data) => {
+  const res = await api.post("/products", data);
+  return res.data;
+};
+
+export const updateProduct = async (id, data) => {
+  const res = await api.put(`/products/${id}`, data);
+  return res.data;
+};
 export const buscarProdutoPorID = async (id) => {
     const { data } = await api.get(`/products/${id}`);
     return data

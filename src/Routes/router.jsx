@@ -1,11 +1,12 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router";
 import Home from "../pages/Home/home";
 import Login from "../pages/Login/login";
 import Products from "../pages/Products/products";
 import ProductDetails from "../pages/ProductDetails/productdetails";
 import NotFound from "../pages/NotFound/notfound";
 import { useAuth } from "../context/AuthContext";
+import ProductForm from "../pages/Products/ProductForm";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -16,6 +17,7 @@ const Router = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
+
     <Route
       path="/admin"
       element={
@@ -24,6 +26,24 @@ const Router = () => (
         </PrivateRoute>
       }
     />
+
+    <Route
+      path="/produtos/novo"
+      element={
+        <PrivateRoute>
+          <ProductForm />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/produtos/editar/:id"
+      element={
+        <PrivateRoute>
+          <ProductForm />
+        </PrivateRoute>
+      }
+    />
+
     <Route path="/produtos/:id" element={<ProductDetails />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
