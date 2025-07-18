@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useForm } from "react-hook-form";
+import {
+  getProducts,
+  createProduct,
+  updateProduct,
+  deleteProductById,
+} from "../../api/apiService";
 
 const Products = () => {
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -8,36 +13,32 @@ const Products = () => {
   const [filter, setFilter] = useState("");
   const [editingId, setEditingId] = useState(null);
 
-  const fetchProducts = () => {
-    axios
-      .get("http://localhost:3000/products")
-      .then((res) => setProducts(res.data));
+  const fetchProducts = async () => {
+    try {
+      const data = await getProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error("Erro ao buscar produtos:", error);
+      setProducts([]);
+    }
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  const onSubmit = (data) => {
-    if (editingId) {
-      axios
-        .put(`http://localhost:3000/products/${editingId}`, data)
-        .then(() => {
-          fetchProducts();
-          reset();
-          setEditingId(null);
-        });
-    } else {
-      axios.post("http://localhost:3000/products", data).then(() => {
-        fetchProducts();
-        reset();
-      });
-    }
-  };
-
-  const deleteProduct = (id) => {
-    if (window.confirm("Tem certeza que deseja excluir este produto?")) {
-      axios.delete(`http://localhost:3000/products/${id}`).then(fetchProducts);
+  const onSubmit = async (data) => {
+    try {
+      if (editingId) {
+        await updateProduct(editingId, data);
+        setEditingId(null);
+      } else {
+        await createProduct(data);
+      }
+      fetchProducts();
+      reset();
+    } catch (error) {
+      console.error("Erro ao salvar produto:", error);
     }
   };
 
@@ -46,6 +47,17 @@ const Products = () => {
     setValue("price", product.price);
     setValue("category", product.category);
     setEditingId(product.id);
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Tem certeza que deseja excluir este produto?")) {
+      try {
+        await deleteProductById(id);
+        fetchProducts();
+      } catch (error) {
+        console.error("Erro ao deletar produto:", error);
+      }
+    }
   };
 
   return (
@@ -59,21 +71,28 @@ const Products = () => {
       />
 
       <ul>
-        {products
-          .filter((p) => p.name.toLowerCase().includes(filter.toLowerCase()))
-          .map((product) => (
-            <li key={product.id}>
-              {product.name} - R$ {product.price}
-              <button onClick={() => deleteProduct(product.id)}>Excluir</button>
-              <button onClick={() => startEdit(product)}>Editar</button>
-            </li>
-          ))}
+        {Array.isArray(products) &&
+          products
+            .filter((p) => p.name.toLowerCase().includes(filter.toLowerCase()))
+            .map((product) => (
+              <li key={product.id}>
+                {product.name} - R$ {product.price}
+                <button onClick={() => handleDelete(product.id)}>
+                  Excluir
+                </button>
+                <button onClick={() => startEdit(product)}>Editar</button>
+              </li>
+            ))}
       </ul>
 
       <h3>{editingId ? "Editar Produto" : "Cadastrar Novo Produto"}</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register("name", { required: true })} placeholder="Nome" />
-        <input {...register("price", { required: true })} placeholder="Preço" />
+        <input
+          {...register("price", { required: true })}
+          placeholder="Preço"
+          type="number"
+        />
         <input
           {...register("category", { required: true })}
           placeholder="Categoria"
@@ -81,6 +100,7 @@ const Products = () => {
         <button type="submit">{editingId ? "Atualizar" : "Cadastrar"}</button>
         {editingId && (
           <button
+            type="button"
             onClick={() => {
               reset();
               setEditingId(null);

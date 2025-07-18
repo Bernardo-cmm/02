@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
+import { getProducts } from "../../api/apiService";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+    try {
+      const product = await getProducts();
+      setProducts(product);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/products")
-      .then((res) => setProducts(res.data));
+    getData();
   }, []);
-
+  if (loading) return <div>Carregando...</div>;
   return (
     <div>
       <h2>Produtos</h2>
