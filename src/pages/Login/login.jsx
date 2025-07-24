@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,21 +19,27 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Usuário"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Senha"
-      />
-      <button type="submit">Entrar</button>
-    </form>
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h2 className={styles.title}>Login</h2>
+        <input
+          className={styles.input}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Usuário"
+        />
+        <input
+          className={styles.input}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Senha"
+        />
+        <button className={styles.button} type="submit">
+          Entrar
+        </button>
+      </form>
+    </div>
   );
 };
 

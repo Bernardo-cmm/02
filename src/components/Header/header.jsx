@@ -1,26 +1,40 @@
 import React from "react";
 import { Link } from "react-router";
 import { useTheme } from "../../context/ThemeContext";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/authcontext";
+import { FaHome, FaMoon, FaSun } from "react-icons/fa";
+import { IoExitSharp } from "react-icons/io5";
+import styles from "./Header.module.css";
 
 const Header = () => {
   const { darkMode, toggleTheme } = useTheme();
   const { isAuthenticated, logout } = useAuth();
 
   return (
-    <header style={{ padding: "1rem", borderBottom: "1px solid #ccc" }}>
-      <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-        <Link to="/">Home</Link>
-        {isAuthenticated && <Link to="/admin">Produtos</Link>}
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link to="/" className={styles.link}>
+          <FaHome />
+        </Link>
 
-        <button onClick={toggleTheme}>
-          {darkMode ? "Modo Claro" : "Modo Escuro"}
+        {isAuthenticated && (
+          <Link to="/admin" className={styles.link}>
+            Produtos
+          </Link>
+        )}
+
+        <button onClick={toggleTheme} className={styles.iconButton}>
+          {darkMode ? <FaSun /> : <FaMoon />}
         </button>
 
         {isAuthenticated ? (
-          <button onClick={logout}>Sair</button>
+          <button onClick={logout} className={styles.logoutButton}>
+            Sair <IoExitSharp />
+          </button>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link to="/login" className={styles.link}>
+            Login
+          </Link>
         )}
       </nav>
     </header>

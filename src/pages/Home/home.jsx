@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
   if (loading) return <div>Carregando...</div>;
   return (
-    <div>
+    <div style={{ marginTop: "20rem" }}>
       <h2>Produtos</h2>
       <ul>
         {products.map((product) => (

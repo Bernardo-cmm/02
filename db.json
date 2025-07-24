@@ -1,10 +1,11 @@
 {
   "products": [
     {
-      "name": "Sabão em Pó",
-      "price": "9.00",
-      "category": "Limpeza",
-      "id": "b730"
+      "name": "J'adore Dior",
+      "price": "1085.79",
+      "urlImage": "https://megamercancias.com.co/wp-content/uploads/2023/01/Jadore-Dior3.jpg",
+      "category": "Perfumaria",
+      "id": "2850"
     }
   ]
 }
