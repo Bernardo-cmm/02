@@ -1,0 +1,29 @@
+.container {
+    padding: 2rem;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--text-color);
+  }
+  
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  
+  .loading {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+  }
+  
+  

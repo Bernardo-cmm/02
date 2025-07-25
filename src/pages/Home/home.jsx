@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import { getProducts } from "../../api/apiService";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import styles from "./Home.module.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -20,17 +21,17 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
-  if (loading) return <div>Carregando...</div>;
+
+  if (loading) return <div className={styles.loading}>Carregando...</div>;
+
   return (
-    <div style={{ marginTop: "20rem" }}>
-      <h2>Produtos</h2>
-      <ul>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Produtos</h2>
+      <div className={styles.grid}>
         {products.map((product) => (
-          <li key={product.id}>
-            <strong>{product.name}</strong> - R$ {product.price}
-          </li>
+          <ProductCard key={product.id} product={product} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

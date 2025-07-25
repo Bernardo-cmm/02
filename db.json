@@ -3,9 +3,58 @@
     {
       "name": "J'adore Dior",
       "price": "1085.79",
-      "urlImage": "https://megamercancias.com.co/wp-content/uploads/2023/01/Jadore-Dior3.jpg",
+      "urlImage": "https://www.sephora.ae/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw4409a484/images/hi-res/PID_principal/PID_principal_2990/P10044155_principal.jpg",
       "category": "Perfumaria",
       "id": "2850"
+    },
+    {
+      "name": "Gloss Dior",
+      "price": "265.00",
+      "urlImage": "https://lojadior.vteximg.com.br/arquivos/range-page-batom-01-dior-addict-case-desktop.jpg?v=638083582678500000",
+      "category": "Perfumaria",
+      "id": "2457"
+    },
+    {
+      "id": "3ab2",
+      "name": "Blush rosy Dior",
+      "price": "399.98",
+      "urlImage": "https://media.karousell.com/media/photos/products/2024/1/12/dior_blush_001_pink_with_free__1705043237_d9511293_progressive.jpg",
+      "category": "Perfumaria"
+    },
+    {
+      "id": "87be",
+      "name": " Hugo Boss Boss Bottled Coffret",
+      "price": "899.97",
+      "urlImage": "https://th.bing.com/th?id=OPHS.NyKRBLe%2bE0uV7A474C474&w=300&h=300&o=5&pid=21.1",
+      "category": "Perfumaria"
+    },
+    {
+      "id": "6892",
+      "name": " Sauvage Elixir Dior",
+      "price": "957.78",
+      "urlImage": "https://th.bing.com/th/id/OPHS.1pOT6Q1iUDooVw474C474?w=300&h=300&o=5&pid=21.1",
+      "category": "Perfumaria"
+    },
+    {
+      "id": "ed25",
+      "name": "Dior Homme",
+      "price": "649.98",
+      "urlImage": "https://th.bing.com/th/id/OPHS.KVrNgyZmvDgrWA474C474?w=300&h=300&o=5&pid=21.1",
+      "category": "Perfumaria"
+    },
+    {
+      "id": "e1ff",
+      "name": "Dior Face Cream",
+      "price": "772.59",
+      "urlImage": "https://i.pinimg.com/originals/96/9b/3b/969b3b5d96f4bc4349fe4235436baa0e.jpg",
+      "category": "Perfumaria"
+    },
+    {
+      "name": "Mercedes Benz Sing",
+      "price": "789.99",
+      "urlImage": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/468607-450-450/sign-mercedes-benz-perfume-masculino-edp-100ml.jpg?v=637747611696670000",
+      "category": "Perfumaria",
+      "id": "3e46"
     }
   ]
 }

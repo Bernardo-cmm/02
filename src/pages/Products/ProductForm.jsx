@@ -23,6 +23,7 @@ const ProductForm = () => {
           setValue("name", data.name);
           setValue("price", data.price);
           setValue("category", data.category);
+          setValue("urlImage", data.urlImage);
         } catch (error) {
           console.error("Erro ao buscar produto:", error);
         }

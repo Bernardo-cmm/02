@@ -7,7 +7,9 @@ export const AuthProvider = ({ children }) => {
 
   const login = (username, password) => {
     if (
-      (username === "Bernardo" || username === "Evelyn") &&
+      (username === "Bernardo" ||
+        username === "Evelyn" ||
+        username === "Bianca") &&
       password === "12345"
     ) {
       setIsAuthenticated(true);

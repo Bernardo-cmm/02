@@ -1,7 +1,7 @@
 .header {
-  background: #ffffffcc;
+  background: var(--bg-color);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid #0b64d8;
+  border-bottom: 1px solid var(--infiniti-edge);
   padding: 1rem 2rem;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@
 
 .link {
   text-decoration: none;
-  color: #2d3748;
+  color: var(--text-color);
   font-weight: 500;
   transition: color 0.2s;
 }
@@ -42,10 +42,10 @@
 }
 
 .logoutButton {
+  font-family: "Poppins", sans-serif;
   background: none;
   border: none;
-  color: #e53e3e;
-  font-weight: 500;
+  color: #b80303;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 }
 
 .logoutButton:hover {
-  color: #c53030;
+  color: #3e7ee6;
 }
 
 

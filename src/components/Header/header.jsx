@@ -29,7 +29,7 @@ const Header = () => {
 
         {isAuthenticated ? (
           <button onClick={logout} className={styles.logoutButton}>
-            Sair <IoExitSharp />
+            Sair
           </button>
         ) : (
           <Link to="/login" className={styles.link}>
