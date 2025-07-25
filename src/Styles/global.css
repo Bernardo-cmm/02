@@ -30,6 +30,7 @@ body.light {
     --btn-text: #ffffff;
     --btn-hover-bg: #0056b3;
     --infiniti-edge: rgb(24, 6, 104);
+    --cor-b: rgb(255, 0, 0);
     
   }
   
@@ -40,6 +41,7 @@ body.light {
     --btn-text: #ffffff;
     --btn-hover-bg: #3e7ee6;
     --infiniti-edge: rgb(155, 139, 226);
+    --cor-b: rgb(255, 77, 77);
   }
   
   body {

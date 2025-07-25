@@ -25,27 +25,27 @@
 }
 
 .link:hover {
-  color: #4a90e2;
+  color: #a85bf0;
 }
 
 .iconButton {
   background: none;
   border: none;
-  color: #2d3748;
+  color: var(--text-color);
   font-size: 1.2rem;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .iconButton:hover {
-  color: #4a90e2;
+  color: #a85bf0;
 }
 
 .logoutButton {
   font-family: "Poppins", sans-serif;
   background: none;
   border: none;
-  color: #b80303;
+  color: var(--text-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 }
 
 .logoutButton:hover {
-  color: #3e7ee6;
+  color: #e70202;
 }
 
 

@@ -29,9 +29,10 @@
   
   .filterInput {
     width: 100%;
+    background-color: var(--bg-color);
     padding: 10px;
     margin-bottom: 25px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--infiniti-edge);
     border-radius: 6px;
     font-size: 16px;
   }

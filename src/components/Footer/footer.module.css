@@ -1,7 +1,7 @@
 .footer {
-    background-color: #f9fafb;
-    color: #4a5568;
-    border-top: 1px solid #e2e8f0;
+    background-color: var( var(--bg-color));
+    color: #4a5568 var(--bg-color); 
+    border-top: 1px solid var(--infiniti-edge);
     padding: 1rem 0;
     text-align: center;
     font-size: 0.95rem;
@@ -9,10 +9,38 @@
     margin-top: auto;
     width: 100%;
   }
-  
-  .content {
+
+  .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+  }
+  
+  .content  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .githubLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #bcd0ed var(--bg-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  
+  .githubLink:hover {
+    color: #132a4d;
+    background: rgba(144, 165, 198, 0.5);
+    border-color: rgba(129, 172, 242, 0.2);
+    transform: translate(-1px);
   }
   
