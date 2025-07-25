@@ -5,8 +5,9 @@ import Login from "../pages/Login/login";
 import Products from "../pages/Products/products";
 import ProductDetails from "../pages/ProductDetails/productdetails";
 import NotFound from "../pages/NotFound/notfound";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authcontext";
 import ProductForm from "../pages/Products/ProductForm";
+import { Layout } from "../components/Layout/Layout";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -15,37 +16,39 @@ const PrivateRoute = ({ children }) => {
 
 const Router = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/login" element={<Login />} />
+    <Route element={<Layout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
 
-    <Route
-      path="/admin"
-      element={
-        <PrivateRoute>
-          <Products />
-        </PrivateRoute>
-      }
-    />
+      <Route
+        path="/admin"
+        element={
+          <PrivateRoute>
+            <Products />
+          </PrivateRoute>
+        }
+      />
 
-    <Route
-      path="/produtos/novo"
-      element={
-        <PrivateRoute>
-          <ProductForm />
-        </PrivateRoute>
-      }
-    />
-    <Route
-      path="/produtos/editar/:id"
-      element={
-        <PrivateRoute>
-          <ProductForm />
-        </PrivateRoute>
-      }
-    />
+      <Route
+        path="/produtos/novo"
+        element={
+          <PrivateRoute>
+            <ProductForm />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/produtos/editar/:id"
+        element={
+          <PrivateRoute>
+            <ProductForm />
+          </PrivateRoute>
+        }
+      />
 
-    <Route path="/produtos/:id" element={<ProductDetails />} />
-    <Route path="*" element={<NotFound />} />
+      <Route path="/produtos/:id" element={<ProductDetails />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
   </Routes>
 );
 

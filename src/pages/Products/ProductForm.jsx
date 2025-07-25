@@ -6,6 +6,7 @@ import {
   updateProduct,
   buscarProdutoPorID,
 } from "../../api/apiService";
+import styles from "./ProductForm.module.css";
 
 const ProductForm = () => {
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -22,13 +23,14 @@ const ProductForm = () => {
           setValue("name", data.name);
           setValue("price", data.price);
           setValue("category", data.category);
+          setValue("urlImage", data.urlImage);
         } catch (error) {
           console.error("Erro ao buscar produto:", error);
         }
       };
       loadProduct();
     } else {
-      reset(); // se for novo, limpa o form
+      reset();
     }
   }, [id, isEdit, setValue, reset]);
 
@@ -39,34 +41,58 @@ const ProductForm = () => {
       } else {
         await createProduct(data);
       }
-      navigate("/admin"); // volta pra lista de produtos
+      navigate("/admin");
     } catch (error) {
       console.error("Erro ao salvar produto:", error);
     }
   };
 
   return (
-    <div>
-      <h2>{isEdit ? "Editar Produto" : "Cadastrar Produto"}</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className={styles.container}>
+      <form className={styles.formWrapper} onSubmit={handleSubmit(onSubmit)}>
+        <h2 className={styles.title}>
+          {isEdit ? "Editar Produto" : "Cadastrar Produto"}
+        </h2>
+
         <input
+          className={styles.input}
           {...register("name", { required: true })}
           placeholder="Nome do produto"
         />
         <input
+          className={styles.input}
           {...register("price", { required: true })}
           placeholder="Preço"
           type="number"
           step="0.01"
         />
         <input
+          className={styles.input}
+          {...register("urlImage", { required: true })}
+          placeholder="Url da imagem"
+          type="text"
+        />
+        <input
+          className={styles.input}
           {...register("category", { required: true })}
           placeholder="Categoria"
         />
-        <button type="submit">{isEdit ? "Atualizar" : "Cadastrar"}</button>
-        <button type="button" onClick={() => navigate("/admin")}>
-          Cancelar
-        </button>
+
+        <div className={styles.buttons}>
+          <button
+            type="submit"
+            className={`${styles.button} ${styles.submitButton}`}
+          >
+            {isEdit ? "Atualizar" : "Cadastrar"}
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate("/admin")}
+            className={`${styles.button} ${styles.cancelButton}`}
+          >
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );

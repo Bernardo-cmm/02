@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router"; // ⬅️ Import necessário
+import { Link } from "react-router";
 import { getProducts, deleteProductById } from "../../api/apiService";
+import styles from "./products.module.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -32,36 +33,42 @@ const Products = () => {
   };
 
   return (
-    <div>
-      <h2>Gerenciar Produtos</h2>
-
-      {/* 🔘 Botão para novo produto */}
-      <div style={{ margin: "10px 0" }}>
-        <Link to="/produtos/novo">
-          <button>Novo Produto</button>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h2>Gerenciar Produtos</h2>
+        <Link to="/produtos/novo" className={styles.addButton}>
+          Novo Produto
         </Link>
       </div>
 
       <input
+        className={styles.filterInput}
         placeholder="Filtrar por nome"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
 
-      <ul>
+      <ul className={styles.productList}>
         {Array.isArray(products) &&
           products
             .filter((p) => p.name.toLowerCase().includes(filter.toLowerCase()))
             .map((product) => (
-              <li key={product.id}>
-                {product.name} - R$ {product.price}
-                <button onClick={() => handleDelete(product.id)}>
-                  Excluir
-                </button>
-                {/* 🔁 Botão editar com link para a rota */}
-                <Link to={`/produtos/editar/${product.id}`}>
-                  <button>Editar</button>
-                </Link>
+              <li key={product.id} className={styles.productItem}>
+                <div className={styles.productInfo}>
+                  <span className={styles.name}>{product.name}</span>
+                  <span className={styles.price}>R$ {product.price}</span>
+                </div>
+                <div className={styles.actions}>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Excluir
+                  </button>
+                  <Link to={`/produtos/editar/${product.id}`}>
+                    <button className={styles.editButton}>Editar</button>
+                  </Link>
+                </div>
               </li>
             ))}
       </ul>

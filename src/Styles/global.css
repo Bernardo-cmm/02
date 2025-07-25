@@ -1,17 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body.light {
     --bg-color: #fefefe;
     --text-color: #222222;
-    --btn-bg: #007bff;
+    --btn-bg: #2894be;
     --btn-text: #ffffff;
     --btn-hover-bg: #0056b3;
+    --infiniti-edge: rgb(24, 6, 104);
+    
   }
   
   body.dark {
     --bg-color: #121212;
     --text-color: #eeeeee;
-    --btn-bg: #1f2937;
+    --btn-bg: #1e5fbb;
     --btn-text: #ffffff;
-    --btn-hover-bg: #374151;
+    --btn-hover-bg: #3e7ee6;
+    --infiniti-edge: rgb(155, 139, 226);
   }
   
   body {
@@ -19,18 +47,3 @@ body.light {
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  
-  button {
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 4px;
-  }
-  
-  button:hover {
-    background-color: var(--btn-hover-bg);
-  }
-  

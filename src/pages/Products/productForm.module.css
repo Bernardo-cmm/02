@@ -1,0 +1,91 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+    padding: 2rem;
+  }
+  
+  .formWrapper {
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: border-color 0.2s ease;
+  }
+  
+  .input:focus {
+    border-color: #3182ce;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submitButton {
+    background-color: #3182ce;
+    color: white;
+  }
+  
+  .submitButton:hover {
+    background-color: #2b6cb0;
+    transform: translateY(-1px);
+  }
+  
+  .cancelButton {
+    background-color: #e53e3e;
+    color: white;
+  }
+  
+  .cancelButton:hover {
+    background-color: #c53030;
+    transform: translateY(-1px);
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+  
